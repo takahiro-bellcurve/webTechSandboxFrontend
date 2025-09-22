@@ -7,25 +7,15 @@ export default function Home() {
       <CubeAnimation />
       <div className="relative z-10 font-sans flex flex-col items-center justify-center min-h-screen p-8">
         <main className="text-center">
-          <h1 className="text-6xl font-bold mb-4 text-gray-800">
+          <h1 className="text-6xl font-bold mb-4 text-foreground">
             Web Tech Sandbox
           </h1>
-          <p className="text-xl text-gray-600 mb-8">
+          <p className="text-xl text-muted-foreground mb-8">
             気ままにいろいろ検証するためのサンドボックス
           </p>
           <div className="flex gap-4 justify-center">
-            <Button
-              variant="default"
-              className="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
-            >
-              Get Started
-            </Button>
-            <Button
-              variant="outline"
-              className="px-6 py-3 bg-white border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors"
-            >
-              Learn More
-            </Button>
+            <Button variant="default">Get Started</Button>
+            <Button variant="outline">Learn More</Button>
           </div>
         </main>
       </div>
