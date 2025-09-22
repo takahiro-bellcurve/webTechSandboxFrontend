@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import CubeAnimation from "@/components/features/common/CubeAnimation";
+import Header from "@/components/features/common/Header";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -29,7 +30,8 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <CubeAnimation key="top-page-animation" />
-        {children}
+        <Header />
+        <main className="pt-16">{children}</main>
       </body>
     </html>
   );
