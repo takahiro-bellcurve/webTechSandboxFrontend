@@ -1,4 +1,4 @@
-import { ArrowRight, Edit } from "lucide-react";
+import { ArrowRight, Edit, MessageCircle, Table } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
@@ -9,14 +9,42 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
+const ProjectStatus = {
+  TODO: "未着手",
+  IN_PROGRESS: "進行中",
+  DONE: "完成",
+} as const;
+
 const pages = [
   {
-    title: "Tiptap エディター",
+    title: "Tiptap Markdown Editor",
     description: "Tiptapを使ったマークダウンエディター",
     href: "/tiptap",
     icon: Edit,
     tags: ["Tiptap", "Markdown", "WYSIWYG", "Editor"],
-    status: "完成",
+    status: ProjectStatus.IN_PROGRESS,
+    textColor: "text-green-800",
+    bgColor: "bg-green-100",
+  },
+  {
+    title: "Tanstack Table",
+    description: "Tanstack Tableを使ったテーブル",
+    href: "/tanstack-table",
+    icon: Table,
+    tags: ["Tanstack Table", "Table", "React", "Typescript"],
+    status: ProjectStatus.TODO,
+    textColor: "text-yellow-800",
+    bgColor: "bg-yellow-100",
+  },
+  {
+    title: "Socket Messaging",
+    description: "socket通信を使ったチャット機能",
+    href: "/socket-messaging",
+    icon: MessageCircle,
+    tags: ["Socket", "Messaging", "React", "Typescript"],
+    status: ProjectStatus.TODO,
+    textColor: "text-yellow-800",
+    bgColor: "bg-yellow-100",
   },
 ];
 
@@ -37,7 +65,9 @@ export const ProjectsPage = () => {
                     <div className="p-2 bg-primary/10 rounded-lg">
                       <Icon className="h-6 w-6 text-primary" />
                     </div>
-                    <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">
+                    <span
+                      className={`text-xs ${page.bgColor} ${page.textColor} px-2 py-1 rounded-full`}
+                    >
                       {page.status}
                     </span>
                   </div>
@@ -57,12 +87,15 @@ export const ProjectsPage = () => {
                       </span>
                     ))}
                   </div>
-                  <Link href={page.href}>
-                    <Button className="w-full group-hover:bg-primary/90 transition-colors">
+                  <Button
+                    className="w-full group-hover:bg-primary/90 transition-colors"
+                    disabled={page.status === ProjectStatus.TODO}
+                  >
+                    <Link href={page.href} className="flex items-center">
                       確認する
                       <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                    </Button>
-                  </Link>
+                    </Link>
+                  </Button>
                 </CardContent>
               </Card>
             );
