@@ -1,4 +1,11 @@
-import { ArrowRight, Edit, MessageCircle, Table } from "lucide-react";
+import {
+  ArrowRight,
+  Edit,
+  Image,
+  MessageCircle,
+  Table,
+  Zap,
+} from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
@@ -21,7 +28,7 @@ const pages = [
     description: "Tiptapを使ったマークダウンエディター",
     href: "/tiptap",
     icon: Edit,
-    tags: ["Tiptap", "Markdown", "WYSIWYG", "Editor"],
+    tags: ["Tiptap", "WYSIWYG"],
     status: ProjectStatus.IN_PROGRESS,
     textColor: "text-green-800",
     bgColor: "bg-green-100",
@@ -31,7 +38,7 @@ const pages = [
     description: "Tanstack Tableを使ったテーブル",
     href: "/tanstack-table",
     icon: Table,
-    tags: ["Tanstack Table", "Table", "React", "Typescript"],
+    tags: ["Tanstack Table"],
     status: ProjectStatus.TODO,
     textColor: "text-yellow-800",
     bgColor: "bg-yellow-100",
@@ -41,7 +48,27 @@ const pages = [
     description: "socket通信を使ったチャット機能",
     href: "/socket-messaging",
     icon: MessageCircle,
-    tags: ["Socket", "Messaging", "React", "Typescript"],
+    tags: ["Socket", "Rails"],
+    status: ProjectStatus.TODO,
+    textColor: "text-yellow-800",
+    bgColor: "bg-yellow-100",
+  },
+  {
+    title: "Image Drag and Drop",
+    description: "画像をドラッグアンドドロップでアップロードする機能",
+    href: "/image-drag-and-drop",
+    icon: Image,
+    tags: ["Cloudflare R2", "Drag and Drop"],
+    status: ProjectStatus.TODO,
+    textColor: "text-yellow-800",
+    bgColor: "bg-yellow-100",
+  },
+  {
+    title: "RFC and Zod Validation Pattern",
+    description: "RFCとZodを使ったバリデーションパターン",
+    href: "/image-upload",
+    icon: Zap,
+    tags: ["RFC", "Zod", "React"],
     status: ProjectStatus.TODO,
     textColor: "text-yellow-800",
     bgColor: "bg-yellow-100",
@@ -72,7 +99,7 @@ export const ProjectsPage = () => {
                     </span>
                   </div>
                   <CardTitle className="text-lg">{page.title}</CardTitle>
-                  <CardDescription className="text-sm leading-relaxed">
+                  <CardDescription className="text-sm leading-relaxed min-h-[3rem] flex items-start">
                     {page.description}
                   </CardDescription>
                 </CardHeader>
