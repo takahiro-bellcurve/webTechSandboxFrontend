@@ -1,4 +1,5 @@
 import CubeAnimation from "@/components/features/topPage/CubeAnimation";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
   return (
@@ -13,18 +14,18 @@ export default function Home() {
             気ままにいろいろ検証するためのサンドボックス
           </p>
           <div className="flex gap-4 justify-center">
-            <a
+            <Button
+              variant="default"
               className="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
-              href="#"
             >
               Get Started
-            </a>
-            <a
+            </Button>
+            <Button
+              variant="outline"
               className="px-6 py-3 bg-white border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors"
-              href="#"
             >
               Learn More
-            </a>
+            </Button>
           </div>
         </main>
       </div>
