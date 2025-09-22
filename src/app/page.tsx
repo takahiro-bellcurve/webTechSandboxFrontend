@@ -14,8 +14,9 @@ export default function Home() {
             気ままにいろいろ検証するためのサンドボックス
           </p>
           <div className="flex gap-4 justify-center">
-            <Button variant="default">Get Started</Button>
-            <Button variant="outline">Learn More</Button>
+            <Button asChild variant="default">
+              <a href="/index">一覧を見る</a>
+            </Button>
           </div>
         </main>
       </div>
