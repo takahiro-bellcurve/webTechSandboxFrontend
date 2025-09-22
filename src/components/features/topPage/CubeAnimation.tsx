@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import * as THREE from "three";
 
 interface Cube {
@@ -15,10 +15,16 @@ export default function CubeAnimation() {
   const mountRef = useRef<HTMLDivElement>(null);
   const sceneRef = useRef<THREE.Scene | null>(null);
   const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
-  const frameRef = useRef<number>();
+  const frameRef = useRef<number>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useLayoutEffect(() => {
+    setIsVisible(true);
+    return () => setIsVisible(false);
+  }, []);
 
   useEffect(() => {
-    if (!mountRef.current) return;
+    if (!mountRef.current || !isVisible) return;
 
     const scene = new THREE.Scene();
     sceneRef.current = scene;
@@ -27,7 +33,7 @@ export default function CubeAnimation() {
       75,
       window.innerWidth / window.innerHeight,
       0.1,
-      1000
+      1000,
     );
     camera.position.z = 5;
 
@@ -50,7 +56,7 @@ export default function CubeAnimation() {
     for (let i = 0; i < cubeCount; i++) {
       const size = Math.random() * 0.5 + 0.2;
       const geometry = new THREE.BoxGeometry(size, size, size);
-      
+
       const hue = Math.random() * 360;
       const material = new THREE.MeshPhongMaterial({
         color: new THREE.Color(`hsl(${hue}, 30%, 85%)`),
@@ -62,11 +68,11 @@ export default function CubeAnimation() {
       });
 
       const cube = new THREE.Mesh(geometry, material);
-      
+
       const initialPosition = new THREE.Vector3(
         (Math.random() - 0.5) * 8,
         (Math.random() - 0.5) * 6,
-        (Math.random() - 0.5) * 3
+        (Math.random() - 0.5) * 3,
       );
       cube.position.copy(initialPosition);
 
@@ -77,12 +83,12 @@ export default function CubeAnimation() {
         rotationSpeed: new THREE.Vector3(
           Math.random() * 0.02 - 0.01,
           Math.random() * 0.02 - 0.01,
-          Math.random() * 0.02 - 0.01
+          Math.random() * 0.02 - 0.01,
         ),
         moveSpeed: new THREE.Vector3(
           Math.random() * 0.02 - 0.01,
           Math.random() * 0.02 - 0.01,
-          Math.random() * 0.02 - 0.01
+          Math.random() * 0.02 - 0.01,
         ),
         initialPosition: initialPosition.clone(),
         amplitude: Math.random() * 2 + 1,
@@ -138,7 +144,7 @@ export default function CubeAnimation() {
         (cube.mesh.material as THREE.Material).dispose();
       });
     };
-  }, []);
+  }, [isVisible]);
 
   return (
     <div

@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 export default function Home() {
   return (
     <div className="relative min-h-screen">
-      <CubeAnimation />
+      <CubeAnimation key="top-page-animation" />
       <div className="relative z-10 font-sans flex flex-col items-center justify-center min-h-screen p-8">
         <main className="text-center">
           <h1 className="text-6xl font-bold mb-4 text-foreground">
