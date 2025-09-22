@@ -1,6 +1,4 @@
-"use client";
-
-import { ArrowRight, Box, Edit } from "lucide-react";
+import { ArrowRight, Edit } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
@@ -11,26 +9,18 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-export default function IndexPage() {
-  const pages = [
-    {
-      title: "Three.js 3Dアニメーション",
-      description: "Three.jsを使った3Dアニメーション",
-      href: "/",
-      icon: Box,
-      tags: ["Three.js", "WebGL", "3D", "Animation"],
-      status: "完成",
-    },
-    {
-      title: "Tiptap エディター",
-      description: "Tiptapを使ったマークダウンエディター",
-      href: "/tiptap",
-      icon: Edit,
-      tags: ["Tiptap", "Markdown", "WYSIWYG", "Editor"],
-      status: "完成",
-    },
-  ];
+const pages = [
+  {
+    title: "Tiptap エディター",
+    description: "Tiptapを使ったマークダウンエディター",
+    href: "/tiptap",
+    icon: Edit,
+    tags: ["Tiptap", "Markdown", "WYSIWYG", "Editor"],
+    status: "完成",
+  },
+];
 
+export const ProjectsPage = () => {
   return (
     <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-8">
@@ -90,4 +80,4 @@ export default function IndexPage() {
       </div>
     </div>
   );
-}
+};
