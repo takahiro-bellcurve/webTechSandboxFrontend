@@ -43,13 +43,6 @@ export default function CubeAnimation() {
     rendererRef.current = renderer;
     mountRef.current.appendChild(renderer.domElement);
 
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
-    scene.add(ambientLight);
-
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
-    directionalLight.position.set(10, 10, 5);
-    scene.add(directionalLight);
-
     const cubes: Cube[] = [];
     const cubeCount = 15;
 
@@ -57,13 +50,10 @@ export default function CubeAnimation() {
       const size = Math.random() * 0.5 + 0.2;
       const geometry = new THREE.BoxGeometry(size, size, size);
 
-      const hue = Math.random() * 360;
-      const material = new THREE.MeshPhongMaterial({
-        color: new THREE.Color(`hsl(${hue}, 30%, 85%)`),
-        emissive: new THREE.Color(`hsl(${hue}, 20%, 75%)`),
-        emissiveIntensity: 0.1,
-        shininess: 100,
-        opacity: 0.8,
+      const material = new THREE.MeshBasicMaterial({
+        color: 0x666666,
+        wireframe: true,
+        opacity: 0.6,
         transparent: true,
       });
 
